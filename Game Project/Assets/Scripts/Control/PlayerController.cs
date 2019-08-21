@@ -15,9 +15,9 @@ namespace RPG.Control
         void Update()
         {
             //if we are interacting with combat skip the rest of the code
-            if (InteractWithCombat()) return;
+            if (InteractWithCombat()) { return; }
             //else if we are interacting with movement skip the rest of the code
-            if (InteractWithMovement()) return;
+            if (InteractWithMovement()) { return; }
             //else nothing to do (print) [change later]
             print("Nothing to do.");
         }
@@ -32,8 +32,8 @@ namespace RPG.Control
             {
                 CombatTarget target = hit.transform.GetComponent<CombatTarget>();
 
-                //if target is equal to null skip the rest of the code and go on to the next hit
-                if (target == null) continue;
+                //if the player (fighter) cannot attack continue (skip the rest of the code and move to next iteration)
+                if (!GetComponent<Fighter>().CanAttack(target)) { continue; }
 
                 //else taget != null
                 //if left mouse buttin is clicked

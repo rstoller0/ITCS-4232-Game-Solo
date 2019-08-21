@@ -9,6 +9,12 @@ namespace RPG.Combat
         [SerializeField] float healthPoints = 100f;
         bool isDead = false;
 
+        //getter for the isDead bool variable in health class
+        public bool IsDead()
+        {
+            return isDead;
+        }
+
         public void TakeDamage(float damage)
         {
             //make health the higher number between health - damage AND 0 (i.e. if health - damage is less than 0, than health = 0)
@@ -24,7 +30,7 @@ namespace RPG.Combat
         private void Die()
         {
             //if is dead already, skip the rest of the code
-            if (isDead) return;
+            if (isDead) { return; }
 
             //else not dead yet, set die trigger in animator
             GetComponent<Animator>().SetTrigger("die");
